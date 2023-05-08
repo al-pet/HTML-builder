@@ -7,4 +7,4 @@ let content = '';
 
 rStream.on('data', chunk => content += chunk);
 rStream.on('end', () => console.log(content));
-rStream.on('err', err => console.log('error', err.message));
+rStream.on('error', err => console.log('error', err.message));
