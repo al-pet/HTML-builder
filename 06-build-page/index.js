@@ -11,6 +11,8 @@ async function mkDir() {
     }
 }
 
+mkDir();
+
 
 const outStream = fs.createWriteStream(path.join(__dirname, 'project-dist', 'style.css'));
 
@@ -30,6 +32,7 @@ async function writeCSS() {
     }
 }
 
+writeCSS();
 
 async function copyFolder(src, srcInProject) {
     const foldersInAssets = await promises.readdir(src, { withFileTypes: true });
@@ -61,6 +64,7 @@ async function copyAssets() {
     }
 }
 
+copyFolder(path.join(__dirname, 'assets'), path.join(__dirname, 'project-dist', 'assets')).then(copyAssets);
 
 async function createHtmlFile() {
     try {
@@ -101,7 +105,4 @@ async function createHtmlFile() {
     }
 }
 
-mkDir();
-writeCSS();
-copyFolder(path.join(__dirname, 'assets'), path.join(__dirname, 'project-dist', 'assets')).then(copyAssets);
 createHtmlFile();
